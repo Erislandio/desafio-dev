@@ -7,7 +7,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: user_root
       MYSQL_DATABASE: project
-      MYSQL_USER: root
+      MYSQL_USER: user_mysql
       MYSQL_PASSWORD: qw12er34
     ports:
       - "3306:3306"

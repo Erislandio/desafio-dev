@@ -1,3 +1,4 @@
+import { formatPrice, OPERATION_TYPES } from "../../lib/utils";
 import {
   Table,
   TableBody,
@@ -6,21 +7,8 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
-import { formatPrice } from "@/lib/utils";
-import { Transation } from "./result-table";
-
-export const OPERATION_TYPES: Record<string, string> = {
-  "1": "Débito",
-  "2": "Boleto",
-  "3": "Financiamento",
-  "4": "Crédito",
-  "5": "Recebimento Empréstimo",
-  "6": "Vendas",
-  "7": "Recebimento TED",
-  "8": "Recebimento DOC",
-  "9": "Aluguel",
-};
+} from "../ui/table";
+import { type Transation } from "./result-table";
 
 export default function ByItemTable({
   transactions,

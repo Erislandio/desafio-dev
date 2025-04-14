@@ -1,8 +1,8 @@
 "use client";
 
-import { formatPrice } from "@/lib/utils";
 import { Eye } from "lucide-react";
 import { useState } from "react";
+import { formatPrice, OPERATION_TYPES } from "../../lib/utils";
 import { Button } from "../ui/button";
 import {
   Dialog,
@@ -21,7 +21,6 @@ import {
   TableHeader,
   TableRow,
 } from "../ui/table";
-import { OPERATION_TYPES } from "./byitem-table";
 import { Transation } from "./result-table";
 
 export default function BystoreTable({

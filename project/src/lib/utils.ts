@@ -1,25 +1,37 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
+export const OPERATION_TYPES: Record<string, string> = {
+  "1": "Débito",
+  "2": "Boleto",
+  "3": "Financiamento",
+  "4": "Crédito",
+  "5": "Recebimento Empréstimo",
+  "6": "Vendas",
+  "7": "Recebimento TED",
+  "8": "Recebimento DOC",
+  "9": "Aluguel",
+};
+
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-function formatDate(dataStr: string) {
+export function formatDate(dataStr: string) {
   const year = dataStr.slice(0, 4);
   const month = dataStr.slice(4, 6);
   const day = dataStr.slice(6, 8);
   return `${day}/${month}/${year}`;
 }
 
-function formatHour(hour: string) {
+export function formatHour(hour: string) {
   const time = hour.slice(0, 2);
   const min = hour.slice(2, 4);
   const seg = hour.slice(4, 6);
   return `${time}:${min}:${seg}`;
 }
 
-function parseRowToObj(row: string) {
+export function parseRowToObj(row: string) {
   const type = row.slice(0, 1);
 
   if (!type) return null;

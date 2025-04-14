@@ -36,9 +36,6 @@ const isDebit = (type: string): boolean =>
 const isCredit = (type: string): boolean =>
   OPERATION_TYPES_CATEGORY[type] === "credit";
 
-/**
- * Agrupa transações por loja (documento)
- */
 const generateByStore = (transactions: Transation[]): Transation[] => {
   const storeMap: Record<string, Transation> = {};
 

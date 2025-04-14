@@ -4,14 +4,7 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = "mysql://root:user_root@localhost:3306/project"
-}
-
-model Store {
-  id           Int           @id @default(autoincrement())
-  transactions Transaction[]
-  name         String
-  owner        String
+  url      = env("DATABASE_URL")
 }
 
 model Transaction {
@@ -21,6 +14,7 @@ model Transaction {
   document   String
   cardNumber String
   hour       String
-  storeId    Int
-  store      Store  @relation(fields: [storeId], references: [id])
+  name       String
+  owner      String
+  type       String
 }
