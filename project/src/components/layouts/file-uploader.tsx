@@ -3,17 +3,13 @@
 import type * as React from "react";
 import { useEffect, useRef, useState } from "react";
 
-import { Button } from "@/components/ui/button";
-import { cn, fileToTransactions } from "@/lib/utils";
+import { fileToTransactions } from "../../lib/utils";
+import { Button } from "../ui/button";
 import DragAndDropFile from "./file-drag-drop";
 import FileList from "./files-list";
 import TransactionTable from "./result-table";
-import UploadProgress from "./upload-progress";
 
-interface FileUploaderProps extends React.HTMLAttributes<HTMLDivElement> {
-  onUpload?: (files: File[]) => Promise<void>;
-  maxSize?: number;
-}
+import { toast } from "sonner";
 
 export interface Transation {
   name: string;
@@ -29,16 +25,12 @@ export interface Transation {
   transactions: Transation[];
 }
 
-export function FileUploader({
-  onUpload,
-  className,
-  maxSize = 1024,
-  ...props
-}: FileUploaderProps) {
+const maxSize = 5 * 1024 * 1024;
+
+export function FileUploader() {
   const [isDragging, setIsDragging] = useState(false);
   const [files, setFiles] = useState<File[]>([]);
   const [uploading, setUploading] = useState(false);
-  const [progress, setProgress] = useState(0);
   const [error, setError] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [transactions, setTransaction] = useState<Transation[]>([]);
@@ -134,29 +126,34 @@ export function FileUploader({
     if (files.length === 0) return;
 
     setUploading(true);
-    setProgress(0);
 
-    const interval = setInterval(() => {
-      setProgress((prev) => {
-        const newProgress = prev + 10;
-        if (newProgress >= 100) {
-          clearInterval(interval);
-          return 100;
-        }
-        return newProgress;
-      });
-    }, 300);
-
-    if (onUpload) {
-      await onUpload(files);
-    }
-
-    setProgress(100);
+    await fetch(`/api/transactions`, {
+      method: "POST",
+      body: JSON.stringify({
+        transactions: transactions.map((item) => ({
+          name: item.name,
+          cardNumber: item.cardNumber,
+          document: item.document,
+          value: item.value,
+          date: item.date,
+          hour: item.hour,
+          type: item.type,
+          owner: item.owner,
+        })),
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
     setTimeout(() => {
       setFiles([]);
       setUploading(false);
-      setProgress(0);
+      setTransaction([]);
+      toast("Sucesso!", {
+        description: "Os dados foram enviados com sucesso!",
+        duration: 3000,
+      });
     }, 1000);
   };
 
@@ -166,7 +163,7 @@ export function FileUploader({
   };
 
   return (
-    <div className={cn("space-y-4", className)} {...props}>
+    <div>
       <DragAndDropFile
         fileInputRef={fileInputRef}
         handleDragLeave={handleDragLeave}
@@ -187,10 +184,9 @@ export function FileUploader({
       <FileList files={files} onRemove={removeFile} uploading={uploading} />
       <TransactionTable transactions={transactions} />
 
-      <UploadProgress progress={progress} uploading={uploading} />
-
-      <div className="flex justify-end">
+      <div className="flex justify-end mt-4">
         <Button
+          className="cursor-pointer"
           onClick={handleUpload}
           disabled={files.length === 0 || uploading}
         >

@@ -1,5 +1,5 @@
-import { cn } from "@/lib/utils";
 import { Upload } from "lucide-react";
+import { cn } from "../../lib/utils";
 
 export default function DragAndDropFile({
   fileInputRef,
@@ -27,8 +27,9 @@ export default function DragAndDropFile({
         isDragging
           ? "border-primary bg-primary/5"
           : "border-muted-foreground/25 hover:border-primary/50",
-        uploading || (disbabled && "pointer-events-none opacity-60")
+        uploading || disbabled ? "pointer-events-none opacity-60" : ""
       )}
+      data-testid="drag-drop-container"
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
@@ -44,7 +45,10 @@ export default function DragAndDropFile({
         disabled={uploading || disbabled}
       />
       <div className="flex flex-col items-center justify-center space-y-2">
-        <Upload className="h-10 w-10 text-muted-foreground" />
+        <Upload
+          className="h-10 w-10 text-muted-foreground"
+          data-testid="upload-icon"
+        />
         <h3 className="text-lg font-semibold">
           Puxe e solte seu arquivo .txt aqui
         </h3>

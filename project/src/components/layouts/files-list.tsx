@@ -14,14 +14,14 @@ export default function FileList({
 
   return (
     <div className="space-y-3">
-      <h4 className="text-sm font-medium">
+      <h4 className="text-sm font-medium mt-4">
         Arquivo selecionado ({files.length})
       </h4>
       <ul className="space-y-2">
         {files.map((file, index) => (
           <li
             key={index}
-            className="flex items-center justify-between bg-muted/40 p-2 rounded-md"
+            className="flex items-center justify-between bg-muted/40 p-2 rounded-md mb-4"
           >
             <div className="flex items-center space-x-2">
               <File className="h-4 w-4 text-muted-foreground" />
