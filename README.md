@@ -1,85 +1,279 @@
-# Desafio programação - para vaga desenvolvedor
+# CNAB File upload web application
 
-Por favor leiam este documento do começo ao fim, com muita atenção.
-O intuito deste teste é avaliar seus conhecimentos técnicos em programação.
-O teste consiste em parsear [este arquivo de texto(CNAB)](https://github.com/ByCodersTec/desafio-ruby-on-rails/blob/master/CNAB.txt) e salvar suas informações(transações financeiras) em uma base de dados a critério do candidato.
-Este desafio deve ser feito por você em sua casa. Gaste o tempo que você quiser, porém normalmente você não deve precisar de mais do que algumas horas.
+![home page](assets/home.png)
 
-# Instruções de entrega do desafio
+A Next.js application for parsing and processing CNAB (Centro Nacional de Automação Bancária) files.
 
-1. Primeiro, faça um fork deste projeto para sua conta no Github (crie uma se você não possuir).
-2. Em seguida, implemente o projeto tal qual descrito abaixo, em seu clone local.
-3. Por fim, envie via email o projeto ou o fork/link do projeto para seu contato Bycoders_ com cópia para rh@bycoders.com.br.
+## 🚀 Features
 
-# Descrição do projeto
+- File upload and processing
+- CNAB format validation
+- Transaction data visualization
+- MySQL database integration
+- Docker support
+- Automated testing
+- Modern UI with Tailwind CSS
 
-Você recebeu um arquivo CNAB com os dados das movimentações finanaceira de várias lojas.
-Precisamos criar uma maneira para que estes dados sejam importados para um banco de dados.
+## 🛠 Tech Stack
 
-Sua tarefa é criar uma interface web que aceite upload do [arquivo CNAB](https://github.com/ByCodersTec/desafio-ruby-on-rails/blob/master/CNAB.txt), normalize os dados e armazene-os em um banco de dados relacional e exiba essas informações em tela.
+- **Frontend**: Next.js 15.3.0, React 19
+- **Backend**: Next.js API Routes
+- **Database**: MySQL (via Prisma 6.6.0)
+- **Testing**: Jest + React Testing Library
+- **Styling**: Tailwind CSS
+- **UI Components**: Radix UI
+- **Container**: Docker
+- **Type Safety**: TypeScript
+- **Form Validation**: Zod
 
-**Sua aplicação web DEVE:**
+## 📋 Prerequisites
 
-1. Ter uma tela (via um formulário) para fazer o upload do arquivo(pontos extras se não usar um popular CSS Framework )
-2. Interpretar ("parsear") o arquivo recebido, normalizar os dados, e salvar corretamente a informação em um banco de dados relacional, **se atente as documentações** que estão logo abaixo.
-3. Exibir uma lista das operações importadas por lojas, e nesta lista deve conter um totalizador do saldo em conta
-4. Ser escrita na sua linguagem de programação de preferência
-5. Ser simples de configurar e rodar, funcionando em ambiente compatível com Unix (Linux ou Mac OS X). Ela deve utilizar apenas linguagens e bibliotecas livres ou gratuitas.
-6. Git com commits atomicos e bem descritos
-7. PostgreSQL, MySQL ou SQL Server
-8. Ter testes automatizados
-9. Docker compose (Pontos extras se utilizar)
-10. Readme file descrevendo bem o projeto e seu setup
-11. Incluir informação descrevendo como consumir o endpoint da API
+- Node.js (Latest LTS version)
+- Docker and Docker Compose
+- MySQL (if running without Docker)
 
-**Sua aplicação web não precisa:**
+## 🚀 Getting Started
 
-1. Lidar com autenticação ou autorização (pontos extras se ela fizer, mais pontos extras se a autenticação for feita via OAuth).
-2. Ser escrita usando algum framework específico (mas não há nada errado em usá-los também, use o que achar melhor).
-3. Documentação da api.(Será um diferencial e pontos extras se fizer)
+1. **Install dependencies**
+```bash
+npm install
+```
 
-# Documentação do CNAB
+2. **Start MySQL database (using Docker)**
+```bash
+npm run mysql
+```
 
-| Descrição do campo  | Inicio | Fim | Tamanho | Comentário
-| ------------- | ------------- | -----| ---- | ------
-| Tipo  | 1  | 1 | 1 | Tipo da transação
-| Data  | 2  | 9 | 8 | Data da ocorrência
-| Valor | 10 | 19 | 10 | Valor da movimentação. *Obs.* O valor encontrado no arquivo precisa ser divido por cem(valor / 100.00) para normalizá-lo.
-| CPF | 20 | 30 | 11 | CPF do beneficiário
-| Cartão | 31 | 42 | 12 | Cartão utilizado na transação 
-| Hora  | 43 | 48 | 6 | Hora da ocorrência atendendo ao fuso de UTC-3
-| Dono da loja | 49 | 62 | 14 | Nome do representante da loja
-| Nome loja | 63 | 81 | 19 | Nome da loja
+3. **Start the development server**
+```bash
+npm run dev
+```
 
-# Documentação sobre os tipos das transações
+The application will be available at [http://localhost:3000](http://localhost:3000)
 
-| Tipo | Descrição | Natureza | Sinal |
-| ---- | -------- | --------- | ----- |
-| 1 | Débito | Entrada | + |
-| 2 | Boleto | Saída | - |
-| 3 | Financiamento | Saída | - |
-| 4 | Crédito | Entrada | + |
-| 5 | Recebimento Empréstimo | Entrada | + |
-| 6 | Vendas | Entrada | + |
-| 7 | Recebimento TED | Entrada | + |
-| 8 | Recebimento DOC | Entrada | + |
-| 9 | Aluguel | Saída | - |
+## 🧪 Running Tests
 
-# Avaliação
+```bash
+# Run tests once
+npm test
 
-Seu projeto será avaliado de acordo com os seguintes critérios.
+# Run tests in watch mode
+npm run test:watch
+```
 
-1. Sua aplicação preenche os requerimentos básicos?
-2. Você documentou a maneira de configurar o ambiente e rodar sua aplicação?
-3. Você seguiu as instruções de envio do desafio?
-4. Qualidade e cobertura dos testes unitários.
+# CNAB documentation
 
-Adicionalmente, tentaremos verificar a sua familiarização com as bibliotecas padrões (standard libs), bem como sua experiência com programação orientada a objetos a partir da estrutura de seu projeto.
+| Descrição do campo | Inicio | Fim | Tamanho | Comentário                                                                                                                |
+| ------------------ | ------ | --- | ------- | ------------------------------------------------------------------------------------------------------------------------- |
+| Tipo               | 1      | 1   | 1       | Tipo da transação                                                                                                         |
+| Data               | 2      | 9   | 8       | Data da ocorrência                                                                                                        |
+| Valor              | 10     | 19  | 10      | Valor da movimentação. *Obs.* O valor encontrado no arquivo precisa ser divido por cem(valor / 100.00) para normalizá-lo. |
+| CPF                | 20     | 30  | 11      | CPF do beneficiário                                                                                                       |
+| Cartão             | 31     | 42  | 12      | Cartão utilizado na transação                                                                                             |
+| Hora               | 43     | 48  | 6       | Hora da ocorrência atendendo ao fuso de UTC-3                                                                             |
+| Dono da loja       | 49     | 62  | 14      | Nome do representante da loja                                                                                             |
+| Nome loja          | 63     | 81  | 19      | Nome da loja                                                                                                              |
 
-# Referência
+## Transaction type documentation
 
-Este desafio foi baseado neste outro desafio: https://github.com/lschallenges/data-engineering
+| Tipo | Descrição              | Natureza | Sinal |
+| ---- | ---------------------- | -------- | ----- |
+| 1    | Débito                 | Entrada  | +     |
+| 2    | Boleto                 | Saída    | -     |
+| 3    | Financiamento          | Saída    | -     |
+| 4    | Crédito                | Entrada  | +     |
+| 5    | Recebimento Empréstimo | Entrada  | +     |
+| 6    | Vendas                 | Entrada  | +     |
+| 7    | Recebimento TED        | Entrada  | +     |
+| 8    | Recebimento DOC        | Entrada  | +     |
+| 9    | Aluguel                | Saída    | -     |@
 
----
+## 🐳 Docker Support
 
-Boa sorte!
+The project includes Docker configuration for easy deployment. To run the entire application using Docker:
+
+```bash
+docker-compose up -d
+```
+
+## 🔧 Available Scripts
+
+- `npm run dev` - Start development server with Turbopack
+- `npm run mysql` - Start MySQL container
+- `npm run build` - Build production version
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+- `npm test` - Run tests
+- `npm run test:watch` - Run tests in watch mode
+
+## 📝 Environment Variables
+
+Create a `.env` file in the root directory with the following variables:
+
+```env
+DATABASE_URL="mysql://user:password@localhost:3306/dbname"
+```
+
+# Transactions API Route Documentation
+
+This API endpoint handles the creation of transaction records in the database.
+
+## Endpoint
+
+```
+POST /api/transactions
+```
+
+## Request Body
+
+The request must include a JSON object with the following structure:
+
+```typescript
+{
+  transactions: [
+    {
+      cardNumber?: string,
+      date: string,      // Format: DD/MM/YYYY
+      document: string,  // Required
+      hour: string,      // Format: HH:MM:SS
+      name: string,      // Required
+      owner: string,     // Required
+      type: string,      // Required
+      value: number      // Required
+    }
+  ]
+}
+```
+
+## Validation Rules
+
+- `cardNumber`: Optional string
+- `date`: Must match format DD/MM/YYYY
+- `document`: Non-empty string
+- `hour`: Must match format HH:MM:SS
+- `name`: Non-empty string
+- `owner`: Non-empty string
+- `type`: Non-empty string
+- `value`: Number
+
+## Responses
+
+### Success (200)
+```json
+{
+  "success": true,
+  "processedCount": number
+}
+```
+
+### Validation Error (400)
+```json
+{
+  "error": "Validation failed",
+  "details": {
+    // Validation error details
+  }
+}
+```
+
+### Server Error (500)
+```json
+{
+  "error": "Internal server error"
+}
+```
+
+## Example Usage
+
+```typescript
+const response = await fetch('/api/transactions', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    transactions: [{
+      cardNumber: "6777****1313",
+      date: "01/03/2019",
+      document: "84515254073",
+      hour: "17:27:12",
+      name: "MERCADO DA AVENIDA",
+      owner: "MARCOS PEREIRA",
+      type: "3",
+      value: 192
+    }]
+  })
+});
+```
+
+# Database Documentation
+
+## Database Schema
+
+The application uses MySQL as the database with Prisma as the ORM. Below is the database structure:
+
+### Transaction Table Diagram
+
+```mermaid
+erDiagram
+    Transaction {
+        int id PK
+        string date
+        float value
+        string document
+        string cardNumber
+        string hour
+        string name
+        string owner
+        string type
+    }
+```
+
+## Field Descriptions
+
+| Field      | Type   | Description                     | Constraints                 |
+| ---------- | ------ | ------------------------------- | --------------------------- |
+| id         | Int    | Unique identifier               | Primary Key, Auto-increment |
+| date       | String | Transaction date (DD/MM/YYYY)   | Required                    |
+| value      | Float  | Transaction amount              | Required                    |
+| document   | String | Document number (CPF)           | Required                    |
+| cardNumber | String | Card number used in transaction | Required                    |
+| hour       | String | Transaction time (HH:MM:SS)     | Required                    |
+| name       | String | Store/Merchant name             | Required                    |
+| owner      | String | Store owner name                | Required                    |
+| type       | String | Transaction type                | Required                    |
+
+## Database Configuration
+
+The database connection is configured using environment variables. Here's the Prisma schema configuration:
+
+```prisma
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+```
+
+## Prisma Commands
+
+```bash
+# Generate Prisma Client
+npx prisma generate
+
+# Run migrations
+npx prisma migrate dev
+
+# Reset database
+npx prisma db reset
+
+# Open Prisma Studio
+npx prisma studio
+```
+
+## Prisma studio
+
+![](assets/studio.png)
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
