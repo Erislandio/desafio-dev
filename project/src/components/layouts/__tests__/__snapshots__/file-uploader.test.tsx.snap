@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FileUploader Component matches snapshot 1`] = `
+<div>
+  <div>
+    <div
+      data-testid="drag-drop-component"
+    >
+      <button
+        data-testid="simulate-drop"
+      >
+        Simulate Drop
+      </button>
+      <button
+        data-testid="simulate-drag-over"
+      >
+        Simulate Drag Over
+      </button>
+      <button
+        data-testid="simulate-drag-leave"
+      >
+        Simulate Drag Leave
+      </button>
+      <input
+        data-testid="file-input"
+        type="file"
+      />
+      <div>
+        isDragging: 
+        false
+      </div>
+      <div>
+        uploading: 
+        false
+      </div>
+      <div>
+        disabled: 
+        false
+      </div>
+    </div>
+    <div
+      data-testid="files-list-component"
+    />
+    <div
+      data-testid="transaction-table-component"
+    />
+    <div
+      class="flex justify-end mt-4"
+    >
+      <button
+        data-testid="upload-button"
+        disabled=""
+      >
+        Enviar
+      </button>
+    </div>
+  </div>
+</div>
+`;

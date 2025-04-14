@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TransactionTable Component matches snapshot in item view 1`] = `
+<div>
+  <div
+    class="rounded-md border"
+  >
+    <div
+      class="space-y-2 flex flex-row items-center justify-between rounded-lg border p-4 m-4"
+    >
+      <div
+        class="space-y-0.5"
+      >
+        <label
+          class="font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-base"
+          for="view-by-store"
+        >
+          Visualizar por loja?
+        </label>
+        <p
+          class="text-sm text-muted-foreground"
+        >
+          Você pode ativar essa função para ver todas as transações por loja.
+        </p>
+        <input
+          class="cursor-pointer"
+          data-testid="view-switch"
+          id="view-by-store"
+          title="Visualizar por loja?"
+          type="checkbox"
+        />
+      </div>
+    </div>
+    <div
+      data-testid="byitem-table"
+    >
+      <span>
+        ByItem Table
+      </span>
+      <span
+        data-testid="byitem-count"
+      >
+        3
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`TransactionTable Component matches snapshot in store view 1`] = `
+<div>
+  <div
+    class="rounded-md border"
+  >
+    <div
+      class="space-y-2 flex flex-row items-center justify-between rounded-lg border p-4 m-4"
+    >
+      <div
+        class="space-y-0.5"
+      >
+        <label
+          class="font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-base"
+          for="view-by-store"
+        >
+          Visualizar por loja?
+        </label>
+        <p
+          class="text-sm text-muted-foreground"
+        >
+          Você pode ativar essa função para ver todas as transações por loja.
+        </p>
+        <input
+          class="cursor-pointer"
+          data-testid="view-switch"
+          id="view-by-store"
+          title="Visualizar por loja?"
+          type="checkbox"
+        />
+      </div>
+    </div>
+    <div
+      data-testid="bystore-table"
+    >
+      <span>
+        ByStore Table
+      </span>
+      <span
+        data-testid="bystore-count"
+      >
+        2
+      </span>
+    </div>
+  </div>
+</div>
+`;

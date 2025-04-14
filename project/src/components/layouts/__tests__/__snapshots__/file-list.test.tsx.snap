@@ -1,0 +1,254 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FileList Component matches snapshot 1`] = `
+<div>
+  <div
+    class="space-y-3"
+  >
+    <h4
+      class="text-sm font-medium"
+    >
+      Arquivo selecionado (
+      3
+      )
+    </h4>
+    <ul
+      class="space-y-2"
+    >
+      <li
+        class="flex items-center justify-between bg-muted/40 p-2 rounded-md"
+      >
+        <div
+          class="flex items-center space-x-2"
+        >
+          <div
+            data-testid="file-icon"
+          >
+            File Icon
+          </div>
+          <span
+            class="text-sm font-medium truncate max-w-[200px]"
+          >
+            test1.txt
+          </span>
+        </div>
+        <button
+          class="h-6 w-6 cursor-pointer"
+          data-size="icon"
+          data-testid="remove-button"
+          data-variant="ghost"
+        >
+          <div
+            data-testid="x-icon"
+          >
+            X Icon
+          </div>
+          <span
+            class="sr-only"
+          >
+            Remover arquivo
+          </span>
+        </button>
+      </li>
+      <li
+        class="flex items-center justify-between bg-muted/40 p-2 rounded-md"
+      >
+        <div
+          class="flex items-center space-x-2"
+        >
+          <div
+            data-testid="file-icon"
+          >
+            File Icon
+          </div>
+          <span
+            class="text-sm font-medium truncate max-w-[200px]"
+          >
+            test2.txt
+          </span>
+        </div>
+        <button
+          class="h-6 w-6 cursor-pointer"
+          data-size="icon"
+          data-testid="remove-button"
+          data-variant="ghost"
+        >
+          <div
+            data-testid="x-icon"
+          >
+            X Icon
+          </div>
+          <span
+            class="sr-only"
+          >
+            Remover arquivo
+          </span>
+        </button>
+      </li>
+      <li
+        class="flex items-center justify-between bg-muted/40 p-2 rounded-md"
+      >
+        <div
+          class="flex items-center space-x-2"
+        >
+          <div
+            data-testid="file-icon"
+          >
+            File Icon
+          </div>
+          <span
+            class="text-sm font-medium truncate max-w-[200px]"
+          >
+            test3.txt
+          </span>
+        </div>
+        <button
+          class="h-6 w-6 cursor-pointer"
+          data-size="icon"
+          data-testid="remove-button"
+          data-variant="ghost"
+        >
+          <div
+            data-testid="x-icon"
+          >
+            X Icon
+          </div>
+          <span
+            class="sr-only"
+          >
+            Remover arquivo
+          </span>
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`FileList Component matches snapshot when uploading 1`] = `
+<div>
+  <div
+    class="space-y-3"
+  >
+    <h4
+      class="text-sm font-medium"
+    >
+      Arquivo selecionado (
+      3
+      )
+    </h4>
+    <ul
+      class="space-y-2"
+    >
+      <li
+        class="flex items-center justify-between bg-muted/40 p-2 rounded-md"
+      >
+        <div
+          class="flex items-center space-x-2"
+        >
+          <div
+            data-testid="file-icon"
+          >
+            File Icon
+          </div>
+          <span
+            class="text-sm font-medium truncate max-w-[200px]"
+          >
+            test1.txt
+          </span>
+        </div>
+        <button
+          class="h-6 w-6 cursor-pointer"
+          data-size="icon"
+          data-testid="remove-button"
+          data-variant="ghost"
+          disabled=""
+        >
+          <div
+            data-testid="x-icon"
+          >
+            X Icon
+          </div>
+          <span
+            class="sr-only"
+          >
+            Remover arquivo
+          </span>
+        </button>
+      </li>
+      <li
+        class="flex items-center justify-between bg-muted/40 p-2 rounded-md"
+      >
+        <div
+          class="flex items-center space-x-2"
+        >
+          <div
+            data-testid="file-icon"
+          >
+            File Icon
+          </div>
+          <span
+            class="text-sm font-medium truncate max-w-[200px]"
+          >
+            test2.txt
+          </span>
+        </div>
+        <button
+          class="h-6 w-6 cursor-pointer"
+          data-size="icon"
+          data-testid="remove-button"
+          data-variant="ghost"
+          disabled=""
+        >
+          <div
+            data-testid="x-icon"
+          >
+            X Icon
+          </div>
+          <span
+            class="sr-only"
+          >
+            Remover arquivo
+          </span>
+        </button>
+      </li>
+      <li
+        class="flex items-center justify-between bg-muted/40 p-2 rounded-md"
+      >
+        <div
+          class="flex items-center space-x-2"
+        >
+          <div
+            data-testid="file-icon"
+          >
+            File Icon
+          </div>
+          <span
+            class="text-sm font-medium truncate max-w-[200px]"
+          >
+            test3.txt
+          </span>
+        </div>
+        <button
+          class="h-6 w-6 cursor-pointer"
+          data-size="icon"
+          data-testid="remove-button"
+          data-variant="ghost"
+          disabled=""
+        >
+          <div
+            data-testid="x-icon"
+          >
+            X Icon
+          </div>
+          <span
+            class="sr-only"
+          >
+            Remover arquivo
+          </span>
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>
+`;

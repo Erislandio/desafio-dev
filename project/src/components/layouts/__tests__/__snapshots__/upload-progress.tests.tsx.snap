@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UploadProgress Component matches snapshot when uploading 1`] = `
+<div>
+  <div
+    class="space-y-2"
+  >
+    <div
+      class="flex justify-between text-xs"
+    >
+      <span>
+        Em progresso...
+      </span>
+      <span>
+        50
+        %
+      </span>
+    </div>
+    <div
+      class="h-2"
+      data-testid="progress-bar"
+      data-value="50"
+    >
+      Progress Bar
+    </div>
+  </div>
+</div>
+`;
