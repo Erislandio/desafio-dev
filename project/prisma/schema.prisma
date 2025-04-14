@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = "mysql://root:user_root@localhost:3306/project"
+}
+
+model Store {
+  id           Int           @id @default(autoincrement())
+  transactions Transaction[]
+  name         String
+  owner        String
+}
+
+model Transaction {
+  id         Int    @id @default(autoincrement())
+  date       String
+  value      Float
+  document   String
+  cardNumber String
+  hour       String
+  storeId    Int
+  store      Store  @relation(fields: [storeId], references: [id])
+}
