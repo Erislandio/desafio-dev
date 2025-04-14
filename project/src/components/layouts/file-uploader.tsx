@@ -18,11 +18,15 @@ interface FileUploaderProps extends React.HTMLAttributes<HTMLDivElement> {
 export interface Transation {
   name: string;
   cardNumber: string;
+  document: string;
   value: number;
   date: string;
   hour: string;
   type: string;
   owner: string;
+  debits: number;
+  credits: number;
+  transactions: Transation[];
 }
 
 export function FileUploader({
@@ -157,6 +161,7 @@ export function FileUploader({
   };
 
   const removeFile = (index: number) => {
+    setTransaction([]);
     setFiles((prevFiles) => prevFiles.filter((_, i) => i !== index));
   };
 
@@ -170,6 +175,7 @@ export function FileUploader({
         isDragging={isDragging}
         uploading={uploading}
         handleFileChange={handleFileChange}
+        disbabled={files.length > 0}
       />
 
       {error && (

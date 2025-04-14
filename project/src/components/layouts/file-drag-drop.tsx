@@ -8,6 +8,7 @@ export default function DragAndDropFile({
   isDragging,
   uploading,
   handleDrop,
+  disbabled,
   handleFileChange,
 }: {
   isDragging: boolean;
@@ -17,6 +18,7 @@ export default function DragAndDropFile({
   fileInputRef: any;
   handleDrop: (event: React.DragEvent<HTMLDivElement>) => void;
   handleFileChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  disbabled: boolean;
 }) {
   return (
     <div
@@ -25,7 +27,7 @@ export default function DragAndDropFile({
         isDragging
           ? "border-primary bg-primary/5"
           : "border-muted-foreground/25 hover:border-primary/50",
-        uploading && "pointer-events-none opacity-60"
+        uploading || (disbabled && "pointer-events-none opacity-60")
       )}
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
@@ -39,7 +41,7 @@ export default function DragAndDropFile({
         className="hidden"
         multiple={false}
         accept={".txt"}
-        disabled={uploading}
+        disabled={uploading || disbabled}
       />
       <div className="flex flex-col items-center justify-center space-y-2">
         <Upload className="h-10 w-10 text-muted-foreground" />
