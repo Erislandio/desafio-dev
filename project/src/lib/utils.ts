@@ -33,6 +33,9 @@ function parseRowToObj(row: string) {
     hour: formatHour(row.slice(42, 48)),
     owner: row.slice(48, 62).trim(),
     name: row.slice(62, 81).trim(),
+    debits: 0,
+    credits: 0,
+    transactions: [],
   };
 }
 
